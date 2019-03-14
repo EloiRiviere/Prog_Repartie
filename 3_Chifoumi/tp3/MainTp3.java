@@ -1,4 +1,4 @@
-package src;
+package tp3;
 
 import java.util.Scanner;
 
