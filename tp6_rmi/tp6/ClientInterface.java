@@ -1,4 +1,4 @@
-package tp6_rmi;
+package tp6;
 
 import java.rmi.*;
 

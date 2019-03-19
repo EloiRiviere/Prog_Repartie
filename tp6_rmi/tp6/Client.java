@@ -1,4 +1,4 @@
-package tp6_rmi;
+package tp6;
 
 import java.net.MalformedURLException;
 import java.rmi.*;
@@ -22,14 +22,14 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 			System.err.println("Usage: Client <serveur>");
 			return;
 		}
-		
+
 		String url = new String("rmi://" + args[0] + "/MonServeur");
 		ServeurInterface serveur =  (ServeurInterface) Naming.lookup(url);
 		System.out.println("J'ai trouvé le serveur à " + url);
-		
+
 		Client client = new Client();
 		serveur.register(client);
-		System.out.println("Je suis enregistré."); 
+		System.out.println("Je suis enregistré.");
 
 
 		Scanner scanner = new Scanner(System.in);
@@ -40,9 +40,8 @@ public class Client extends UnicastRemoteObject implements ClientInterface {
 			String s = scanner.nextLine();
 			if(s.equals("")) break;
 			/*String reponse = */serveur.println(client,"[" + nom + "]: " + s);
-			//System.out.println(reponse);
 		}
-		
+
 		serveur.unregister(client);
 		UnicastRemoteObject.unexportObject(client, true);
 	}
