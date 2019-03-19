@@ -1,4 +1,4 @@
-package tp3_chifoumi;
+package tp3;
 
 import java.util.Scanner;
 
