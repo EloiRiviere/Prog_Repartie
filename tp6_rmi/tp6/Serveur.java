@@ -14,6 +14,17 @@ public class Serveur extends UnicastRemoteObject implements ServeurInterface
 	protected Serveur() throws RemoteException
 	{
 		super();
+		/*
+		try
+		{
+			Runtime runtime = new Runtime.getRuntime();
+			runtime.exec("export ClassPath=.; rmiregistry &");
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		*/
 	}
 
 	public synchronized void register(ClientInterface client) throws RemoteException
