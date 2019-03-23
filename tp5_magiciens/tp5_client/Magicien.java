@@ -19,17 +19,11 @@ public class Magicien implements Serializable
 		this.nom = nom;
 		this.pointsVie = 10;
 		this.sorts = new ArrayList<Sort>();
-		try
-		{
-			for(int i=0; i<5; i++)
-			{
-				this.sorts.add(CombatServer.randSort());
-			}
-		}
-		catch (InterruptedException e)
-        {
-          e.printStackTrace();
-        }
+	}
+
+	public List<Sort> get_list_sorts()
+	{
+		return this.sorts;
 	}
 
 	public Sort jeter_sort()

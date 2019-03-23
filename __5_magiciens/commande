@@ -1,1 +1,0 @@
-rm tp5_client/*.class; rm tp5_serveur/*.class; javac tp5_serveur/*; javac tp5_client/*;
