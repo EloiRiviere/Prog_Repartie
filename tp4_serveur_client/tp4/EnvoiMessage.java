@@ -3,6 +3,7 @@ package tp4;
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
+import java.util.NoSuchElementException;
 
 public class EnvoiMessage extends Thread
 {
@@ -22,13 +23,18 @@ public class EnvoiMessage extends Thread
   {
     try
     {
+      Donnees d;
       while(true)
       {
-        Donnees d = new Donnees(nom, hostname);
-        d.setS(sc.nextLine());
-        this.out.writeObject(d);
-        System.out.println("envoyé : " + d.getS());
-        if(d.getS().equals("Bye")) break;
+        try
+        {
+          d = new Donnees(nom, hostname);
+          d.setS(sc.nextLine());
+          this.out.writeObject(d);
+          //System.out.println("envoyé : " + d.getS());
+          if(d.getS().equals("Bye")) break;
+        }
+        catch (NoSuchElementException e){ System.out.println("Le scanner d'entrée standard a été fermé.");}
       }
       System.out.println("Vous vous êtes déconnecté.");
     }

@@ -42,7 +42,6 @@ public class MainTp4Client
     	String hostName = sc.nextLine();
     	System.out.print("Entrez votre nom: ");
     	String nom = sc.nextLine();
-			sc.close();
 
 			int portNumber = Integer.parseInt(args[0]);
 
@@ -54,13 +53,16 @@ public class MainTp4Client
       )
       {
 				Donnees d = new Donnees(nom,hostName);
-				d.setS("Bonjour !");
+				d.setS("est connecté");
 				out.writeObject(d);
 
 				EnvoiMessage thread_envoi = new EnvoiMessage(nom,hostName,out);
 				ReceptionMessage thread_reception = new ReceptionMessage(in);
+				thread_envoi.start();
+				thread_reception.start();
 				thread_envoi.join();
 				thread_reception.interrupt();
+				sc.close();
       	System.exit(0);
       }
       catch (UnknownHostException e)
